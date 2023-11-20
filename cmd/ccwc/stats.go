@@ -8,10 +8,11 @@ import (
 )
 
 type stats struct {
-	bytes uint64
-	words uint64
-	lines uint64
-	chars uint64
+	bytes    uint64
+	words    uint64
+	lines    uint64
+	chars    uint64
+	filename string
 }
 
 func CalculateStats(reader *bufio.Reader) stats {
