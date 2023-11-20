@@ -20,3 +20,18 @@ goccwc % wc -l test.txt
 goccwc % go run ./cmd/ccwc -l test.txt
 7145    test.txt
 ```
+
+### Step 3
+
+```bash
+% wc -w test.txt
+   58164 test.txt
+goccwc % go run ./cmd/ccwc -w test.txt
+58164   test.txt
+```
+
+With the addition of some unit tests, which can be run with:
+```bash
+goccwc % go test ./cmd/ccwc
+ok      ccwc/cmd/ccwc
+```

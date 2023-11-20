@@ -31,18 +31,18 @@ func main() {
 
 	reader := bufio.NewReader(file)
 
-	bytesCount, wordsCount, linesCount := CalculateStats(reader)
+	fileStats := CalculateStats(reader)
 
 	var cols []string
 
 	if printBytes {
-		cols = append(cols, strconv.FormatUint(bytesCount, 10))
+		cols = append(cols, strconv.FormatUint(fileStats.bytes, 10))
 	}
 	if printLines {
-		cols = append(cols, strconv.FormatUint(linesCount, 10))
+		cols = append(cols, strconv.FormatUint(fileStats.lines, 10))
 	}
 	if printWords {
-		cols = append(cols, strconv.FormatUint(wordsCount, 10))
+		cols = append(cols, strconv.FormatUint(fileStats.words, 10))
 	}
 	cols = append(cols, filename)
 
