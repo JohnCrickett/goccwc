@@ -59,3 +59,12 @@ goccwc % cat test.txt | wc -l
 goccwc % cat test.txt | go run ./cmd/ccwc -l
 7145
 ```
+
+### Testing on Big Files (Over 100 GB)
+```bash
+goccwc % seq 1 300000 | xargs -Inone cat test.txt | wc
+ 2143500000 17449200000 102657000000
+goccwc % seq 1 300000 | xargs -Inone cat test.txt | go run ./cmd/ccwc
+2143500000      17449200000     102657000000
+```
+Both use < 3MB memory.
