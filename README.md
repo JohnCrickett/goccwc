@@ -11,3 +11,12 @@ goccwc % wc -c test.txt
 goccwc % go run ./cmd/ccwc -c test.txt
 342190  test.txt
 ```
+
+### Step 2
+
+```bash
+goccwc % wc -l test.txt
+    7145 test.txt
+goccwc % go run ./cmd/ccwc -l test.txt
+7145    test.txt
+```
