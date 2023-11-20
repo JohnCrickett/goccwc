@@ -11,6 +11,7 @@ type stats struct {
 	bytes uint64
 	words uint64
 	lines uint64
+	chars uint64
 }
 
 func CalculateStats(reader *bufio.Reader) stats {
@@ -19,6 +20,7 @@ func CalculateStats(reader *bufio.Reader) stats {
 	var bytesCount uint64
 	var linesCount uint64
 	var wordsCount uint64
+	var charsCount uint64
 
 	for {
 		charRead, bytesRead, err := reader.ReadRune()
@@ -34,6 +36,7 @@ func CalculateStats(reader *bufio.Reader) stats {
 		}
 
 		bytesCount += uint64(bytesRead)
+		charsCount++
 		if charRead == '\n' {
 			linesCount++
 		}
@@ -42,5 +45,5 @@ func CalculateStats(reader *bufio.Reader) stats {
 		}
 		prevChar = charRead
 	}
-	return stats{bytes: bytesCount, words: wordsCount, lines: linesCount}
+	return stats{bytes: bytesCount, words: wordsCount, lines: linesCount, chars: charsCount}
 }

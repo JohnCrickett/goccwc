@@ -35,3 +35,11 @@ With the addition of some unit tests, which can be run with:
 goccwc % go test ./cmd/ccwc
 ok      ccwc/cmd/ccwc
 ```
+
+### Step 4
+```bash
+goccwc % wc -m test.txt
+  339292 test.txt
+goccwc % go run ./cmd/ccwc -m test.txt
+339292  test.txt
+```

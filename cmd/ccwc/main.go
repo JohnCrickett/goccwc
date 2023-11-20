@@ -14,10 +14,12 @@ func main() {
 	var printBytes bool
 	var printLines bool
 	var printWords bool
+	var printChars bool
 
 	flag.BoolVar(&printBytes, "c", false, "Count bytes")
-	flag.BoolVar(&printLines, "l", false, "Count line")
-	flag.BoolVar(&printWords, "w", false, "Word line")
+	flag.BoolVar(&printLines, "l", false, "Count lines")
+	flag.BoolVar(&printWords, "w", false, "Count words")
+	flag.BoolVar(&printChars, "m", false, "Count characters")
 	flag.Parse()
 
 	filename := flag.CommandLine.Arg(0)
@@ -43,6 +45,9 @@ func main() {
 	}
 	if printWords {
 		cols = append(cols, strconv.FormatUint(fileStats.words, 10))
+	}
+	if printChars {
+		cols = append(cols, strconv.FormatUint(fileStats.chars, 10))
 	}
 	cols = append(cols, filename)
 
