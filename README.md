@@ -8,7 +8,7 @@ Go solution to [Coding Challenges](https://codingchallenges.fyi/challenges/intro
 ```bash
 goccwc % wc -c test.txt
   342190 test.txt
-goccwc % go run ./cmd/ccwc -c test.txt
+goccwc % go run . -c test.txt
 342190  test.txt
 ```
 
@@ -17,7 +17,7 @@ goccwc % go run ./cmd/ccwc -c test.txt
 ```bash
 goccwc % wc -l test.txt
     7145 test.txt
-goccwc % go run ./cmd/ccwc -l test.txt
+goccwc % go run . -l test.txt
 7145    test.txt
 ```
 
@@ -26,21 +26,21 @@ goccwc % go run ./cmd/ccwc -l test.txt
 ```bash
 % wc -w test.txt
    58164 test.txt
-goccwc % go run ./cmd/ccwc -w test.txt
+goccwc % go run . -w test.txt
 58164   test.txt
 ```
 
 With the addition of some unit tests, which can be run with:
 ```bash
-goccwc % go test ./cmd/ccwc
-ok      ccwc/cmd/ccwc
+goccwc % go test .
+ok      ccwc
 ```
 
 ### Step 4
 ```bash
 goccwc % wc -m test.txt
   339292 test.txt
-goccwc % go run ./cmd/ccwc -m test.txt
+goccwc % go run . -m test.txt
 339292  test.txt
 ```
 
@@ -48,7 +48,7 @@ goccwc % go run ./cmd/ccwc -m test.txt
 ```bash
 % wc test.txt
     7145   58164  342190 test.txt
-goccwc % go run ./cmd/ccwc test.txt
+goccwc % go run . test.txt
 7145    58164   342190  test.txt
 ```
 
@@ -56,7 +56,7 @@ goccwc % go run ./cmd/ccwc test.txt
 ```bash
 goccwc % cat test.txt | wc -l
     7145
-goccwc % cat test.txt | go run ./cmd/ccwc -l
+goccwc % cat test.txt | go run . -l
 7145
 ```
 
@@ -64,7 +64,7 @@ goccwc % cat test.txt | go run ./cmd/ccwc -l
 ```bash
 goccwc % seq 1 300000 | xargs -Inone cat test.txt | wc
  2143500000 17449200000 102657000000
-goccwc % seq 1 300000 | xargs -Inone cat test.txt | go run ./cmd/ccwc
+goccwc % seq 1 300000 | xargs -Inone cat test.txt | go run .
 2143500000      17449200000     102657000000
 ```
 Both use < 3MB memory.
