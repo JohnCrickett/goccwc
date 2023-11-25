@@ -27,7 +27,6 @@ type stats struct {
 }
 
 func CalculateStats(reader *bufio.Reader) stats {
-
 	var prevChar rune
 	var bytesCount uint64
 	var linesCount uint64
@@ -49,14 +48,18 @@ func CalculateStats(reader *bufio.Reader) stats {
 
 		bytesCount += uint64(bytesRead)
 		charsCount++
+
 		if charRead == '\n' {
 			linesCount++
 		}
+
 		if !unicode.IsSpace(prevChar) && unicode.IsSpace(charRead) {
 			wordsCount++
 		}
+
 		prevChar = charRead
 	}
+
 	return stats{bytes: bytesCount, words: wordsCount, lines: linesCount, chars: charsCount}
 }
 
