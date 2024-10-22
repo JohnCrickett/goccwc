@@ -39,10 +39,10 @@ func TestFormatStats(t *testing.T) {
 		inputFilename string
 		Want          string
 	}{
-		{"Empty", stats{bytes: 0, words: 0, lines: 0, chars: 0}, Options{true, true, true, false}, "", "0\t0\t0\t"},
-		{"None Selected", stats{bytes: 11, words: 2, lines: 1, chars: 0}, Options{false, false, false, false}, "", ""},
-		{"Default", stats{bytes: 11, words: 2, lines: 1, chars: 0}, Options{true, true, true, false}, "filename", "1\t2\t11\tfilename"},
-		{"Chars", stats{bytes: 0, words: 0, lines: 0, chars: 100}, Options{false, false, false, true}, "filename", "100\tfilename"},
+		{"Empty", stats{bytes: 0, words: 0, lines: 0, chars: 0}, Options{true, true, true, false}, "", " 0  0  0 "},
+		{"None Selected", stats{bytes: 11, words: 2, lines: 1, chars: 0}, Options{false, false, false, false}, "", " "},
+		{"Default", stats{bytes: 11, words: 2, lines: 1, chars: 0}, Options{true, true, true, false}, "filename", "  1   2  11 filename"},
+		{"Chars", stats{bytes: 0, words: 0, lines: 0, chars: 100}, Options{false, false, false, true}, "filename", " 100 filename"},
 	}
 
 	for _, test := range cases {
