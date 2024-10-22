@@ -98,22 +98,50 @@ func CalculateStatsForFiles(filenames []string, options Options) {
 	}
 }
 
+func maxStatSize(fileStats stats) int {
+	maxLen := 0
+
+	lenLines := len(strconv.FormatUint(fileStats.lines, 10))
+	if lenLines > maxLen {
+		maxLen = lenLines
+	}
+
+	lenWords := len(strconv.FormatUint(fileStats.words, 10))
+	if lenWords > maxLen {
+		maxLen = lenWords
+	}
+
+	lenBytes := len(strconv.FormatUint(fileStats.bytes, 10))
+	if lenBytes > maxLen {
+		maxLen = lenBytes
+	}
+
+	lenChars := len(strconv.FormatUint(fileStats.chars, 10))
+	if lenChars > maxLen {
+		maxLen = lenChars
+	}
+	return maxLen + 1
+}
+
 func formatStats(commandLineOptions Options, fileStats stats, filename string) string {
 	var cols []string
 
+	maxDigits := maxStatSize(fileStats)
+	fmtString := fmt.Sprintf("%%%dd", maxDigits)
+
 	if commandLineOptions.printLines {
-		cols = append(cols, strconv.FormatUint(fileStats.lines, 10))
+		cols = append(cols, fmt.Sprintf(fmtString, fileStats.lines))
 	}
 	if commandLineOptions.printWords {
-		cols = append(cols, strconv.FormatUint(fileStats.words, 10))
+		cols = append(cols, fmt.Sprintf(fmtString, fileStats.words))
 	}
 	if commandLineOptions.printBytes {
-		cols = append(cols, strconv.FormatUint(fileStats.bytes, 10))
+		cols = append(cols, fmt.Sprintf(fmtString, fileStats.bytes))
 	}
 	if commandLineOptions.printChars {
-		cols = append(cols, strconv.FormatUint(fileStats.chars, 10))
+		cols = append(cols, fmt.Sprintf(fmtString, fileStats.chars))
 	}
-	cols = append(cols, filename)
+	statsString := strings.Join(cols, " ") + " " + filename
 
-	return strings.Join(cols, "\t")
+	return statsString
 }
